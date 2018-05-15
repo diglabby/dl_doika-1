@@ -14,12 +14,12 @@ loadDataConfig();
 
 function loadConfig(){
 
-     getOutputFromRequest('/dl_doika-1/mpa/ajax-config.php', setConfigHTML)
+     getOutputFromRequest('/mpa/ajax-config.php', setConfigHTML)
 
 }
 function loadDataConfig(){
 
-   getOutputFromRequest('/dl_doika-1/mpa/ajax-config.php', setConfigData);
+   getOutputFromRequest('/mpa/ajax-config.php', setConfigData);
 
 }
 
@@ -32,7 +32,7 @@ function setConfigData(data){
 function setConfigHTML(data){
 
   document.getElementsByClassName("donate-title")[0].innerText = data.titleDonate;     
-  document.querySelector(".donate-desc div").innerText = data.shortTextDonate;
+  document.querySelector(".donate-desc div").innerHTML = data.shortTextDonate;
   document.getElementsByClassName("donate-sum")[0].innerText = data.sumDonate;
       
 }
@@ -127,7 +127,7 @@ function submitbutton() {
       clickedSubmit = true;
     } else return;
 
-    var url = 'dl_doika-1/mpa/donate.php?donate=' + sum;
+    var url = '/mpa/donate.php?donate=' + sum;
     getOutputFromRequest(url, getBePaidJS);
 
   }
